@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: darkcyan;
+            max-width: 500px;
+            min-height: 300px;
+            font-size: 24px;
+            gap: 30px;
+            color: white;
+            margin-top: 10px;
+            border-radius: 15px;
+            padding: 1px;
+
+        }
+
+        #btn {
+            padding: 20px 40px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            background-color: yellowgreen;
+            color: whitesmoke;
+            margin-bottom: 10px;
+
+        }
+
+        .button-div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #input_list
+        {
+            border-radius: 5px;
+            border: 2px solid darkcyan;
+            padding: 10px;
+        }
+
+        .open-sans-normal2 {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+    </style>
+</head>
+
+<body class="open-sans-normal2">
+    <div class="container">
+        
+        <h5>Click an items to remove </h5>
+        <ul id="list">
+            <li>Php</li>
+            <li>java</li>
+            <li>mysql</li>
+            <li>css</li>
+            <li>oracle</li>
+        </ul>
+        <div  >
+            <textarea name="" id="input_list" cols="30" rows="5" placeholder="write a list here"></textarea>
+             
+        </div>
+
+        <div class="button-div">
+            
+            <button id="btn">add</button>
+        </div>
+
+    </div>
+
+
+    <script>
+        const list = document.getElementById("list");
+        /*list.addEventListener("dblclick",(e)=>{
+            console.log(23);
+        });
+
+        list.addEventListener("click", (e) => {
+            //console.dir(e);
+             console.dir(e.target);
+            if (e.target.matches("li")) {
+
+                if (e.target.innerText == "java") e.target.style.backgroundColor = "red";
+                else if (e.target.innerText == "css") e.target.style.backgroundColor = "green";
+                else e.target.style.backgroundColor = "cyan";
+            }
+
+        });
+        */
+
+        list.addEventListener("click", (e) => {
+            //console.log(23);
+            if (e.target.matches("li")) {
+                //console.log(23);
+                //console.log(this);
+                e.target.parentNode.removeChild(e.target);
+            }
+        })
+        document.getElementById("btn").addEventListener("click", (e) => {
+            //console.log(23);
+            const newElement = document.createElement("li");
+            //newElement.textContent = "ajax";
+            const inputed_container = document.getElementById("input_list");
+            newElement.textContent = inputed_container.value;
+            if (inputed_container.value) {
+                list.appendChild(newElement); inputed_container.value = '';
+            }
+            else alert("input an item");
+
+        });
+    </script>
+
+</body>
+
+</html>
